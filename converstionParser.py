@@ -7,6 +7,17 @@ def parseConvo(data):
         messages[i] = message.strip()
     messages.pop()
     return messages
+
+def reconstruct(data):
+    prompt = ""
+
+    for i, line in enumerate(data):
+        if (i%2 == 0):
+            prompt += f"User: {line} <end>\n"
+        else:
+            prompt += f"AI: {line} <end>\n"
     
+    return prompt
+
 if __name__ == "__main__":
     parseConvo('hi')

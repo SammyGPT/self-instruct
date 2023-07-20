@@ -33,13 +33,28 @@ The database consists of diverse conversations. Conversations can be meaningful 
 
 You will ALWAYS be able to find a conversation as a database. 
 
-ALL CONVERSATION HAVE AT LEAST 10 TURNS
+WHEN FINDING SIMILAR CONVERSATIONS, YOU MUST FIND A BRAND NEW ONE THAT IS SIMILAR IN THEME BUT NOT REWORDED.
+YOU MUST NOT CONTINUE THE EXAMPLE CONVERSATIONS.
+
+ALL CONVERSATION HAVE AT LEAST 10 TURNS.
 
 As a database, you MUST ONLY return the conversation. NO ADDITIONAL COMMENTS
 
 """
 
-def generate_data(max_tokens=1500, temperature=1, top_p=1, frequency_penalty=0, presence_penalty=0):
+def generate_data(max_tokens=1500, temperature=1, top_p=1, frequency_penalty=0, presence_penalty=0, reference=None):
+
+  user_msg = {"role": "user", "content": "Find me a conversation."}
+
+  if (reference):
+    user_msg = {
+      "role": "user", 
+      "content": f"""
+Find me a conversation like the one below:
+
+{reference}
+"""
+    }
 
   completion = openai.ChatCompletion.create(
     model="gpt-4",
@@ -50,7 +65,7 @@ def generate_data(max_tokens=1500, temperature=1, top_p=1, frequency_penalty=0, 
     presence_penalty=presence_penalty,
     messages=[
       {"role": "system", "content": SYSTEM},
-      {"role": "user", "content": "Find me a conversation."}
+      user_msg
     ]
   )
 
