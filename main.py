@@ -1,28 +1,33 @@
 from generate import generate_data
 from review import readJSON, writeJSON, reviewData
+from converstionParser import parseConvo
 import random
-
+import time
 import os 
 
 cwd = os.getcwd()
-# task_pool = readJSON(f"{cwd}/task_pool.json")
-generated_pool = []
+generated_pool = readJSON(f"{cwd}/pool.json")
 
 turns = int(input("Enter the number of conversations you would like: "))
 
 for i in range(turns):
+
+    start = time.time()
+    print(f"[ROUND {i+1}/{turns}]: Generating conversation ... ",end="", flush=True)
+
     convo = generate_data(
         top_p=random.random()/2 + 0.5, 
         temperature=random.random()/2 + 1
     )
 
-    parsed_convo = praser(convo)
+    parsed_convo = parseConvo(convo)
 
-    print(f"[ROUND {i}]: Generated conversation with {len(parsed_convo)} turns.")
+    elasped_time = round(time.time() - start, 3)
+    print(f"Done in {elasped_time}s", flush=True)
 
     generated_pool.append(parsed_convo)
 
-print(f"Successfully generated {turns} conversations... saving files ...")
-writeJSON(f"{cwd}/pool.json")
+print(f"Successfully generated {turns} conversations, saving files")
+writeJSON(f"{cwd}/pool.json", generated_pool)
 
 

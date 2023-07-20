@@ -33,6 +33,8 @@ The database consists of diverse conversations. Conversations can be meaningful 
 
 You will ALWAYS be able to find a conversation as a database. 
 
+ALL CONVERSATION HAVE AT LEAST 10 TURNS
+
 As a database, you MUST ONLY return the conversation. NO ADDITIONAL COMMENTS
 
 """

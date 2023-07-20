@@ -1,5 +1,4 @@
-def parseConvo():
-    data = getFile()
+def parseConvo(data):
     messages = data.split("<end>")
     for i, message in enumerate(messages):
         message = message.replace("User:", "")
@@ -9,9 +8,5 @@ def parseConvo():
     messages.pop()
     return messages
     
-def getFile():
-    with open("text.txt", 'r') as f:
-        data = f.read()
-        return str(data)
-    
-parseConvo()
+if __name__ == "__main__":
+    parseConvo('hi')
