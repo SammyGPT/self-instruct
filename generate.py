@@ -20,12 +20,14 @@ The key features of SammyGPT are as follows:
   - School Wiki: APs, courses, extracurriculars,  and upcoming events
   - Learning: Students will learn about the latest machine learning technologies through collaboration to create SammyGPT.
 
-The followin is an example format of a conversation:
+The following is an example format of a conversation:
 
 User: How are you doing <end>
 AI: I am doing great, what about you <end>
 User: I am doing okay, my best friend just left me <end>
 AI: Dawg <end>
+
+The user WILL ALWAYS START FIRST.
   
 The database consists of diverse conversations. Conversations can be meaningful or random, and consists of many different styles of languages.
 
@@ -45,9 +47,8 @@ def generate_data(max_tokens=1500, temperature=1, top_p=1, frequency_penalty=0, 
     frequency_penalty=frequency_penalty,
     presence_penalty=presence_penalty,
     messages=[
-      {
-        "role": "system", "content": SYSTEM
-      }
+      {"role": "system", "content": SYSTEM},
+      {"role": "user", "content": "Find me a conversation."}
     ]
   )
 

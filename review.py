@@ -15,6 +15,10 @@ def readJSON(path):
     with open(path, 'r') as f:
         data = json.load(f)
         return data
+    
+def writeJSON(path, data):
+    with open(path, 'w') as f:
+        json.dump(data, f)
   
 if __name__ == "__main__":
     reviewData({})
