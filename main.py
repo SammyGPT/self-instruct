@@ -26,6 +26,7 @@ for i in range(turns):
     print(f"Done in {elasped_time}s", flush=True)
 
     generated_pool.append(parsed_convo)
+    writeJSON(f"{cwd}/pool.json", generated_pool)
 
 print(f"Successfully generated {turns} conversations, saving files")
 writeJSON(f"{cwd}/pool.json", generated_pool)
