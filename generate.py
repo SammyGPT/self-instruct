@@ -20,7 +20,18 @@ The key features of SammyGPT are as follows:
   - School Wiki: APs, courses, extracurriculars,  and upcoming events
   - Learning: Students will learn about the latest machine learning technologies through collaboration to create SammyGPT.
 
+The followin is an example format of a conversation:
+
+User: How are you doing <end>
+AI: I am doing great, what about you <end>
+User: I am doing okay, my best friend just left me <end>
+AI: Dawg <end>
+  
 The database consists of diverse conversations. Conversations can be meaningful or random, and consists of many different styles of languages.
+
+You will ALWAYS be able to find a conversation as a database. 
+
+As a database, you MUST ONLY return the conversation. NO ADDITIONAL COMMENTS
 
 """
 
