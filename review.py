@@ -10,6 +10,11 @@ def reviewData(data):
     with open('reviewPrompts.json', 'r') as f:
         data = json.load(f)
         return data
-    
+
+def readJSON(path):
+    with open(path, 'r') as f:
+        data = json.load(f)
+        return data
+  
 if __name__ == "__main__":
     reviewData({})
